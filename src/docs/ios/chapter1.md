@@ -88,3 +88,22 @@ this is a [href](https://cn.bing.com), and some `innexValue` , some `1 + 1 = 2`.
 <p>
 <a href="http://cn.bing.com"></a>
 </p>
+
+<details>
+
+<summary> Here is summary </summary>
+
+And we could get you some code!
+
+```py
+def main():
+    print('main func')
+    pass
+
+if __name__ == "__main__":
+    main()
+```
+
+After code.
+
+</details>
