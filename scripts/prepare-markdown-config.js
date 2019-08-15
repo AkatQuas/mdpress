@@ -44,7 +44,7 @@ const parseMenuItem = (menuList, contentList, menu, folder) => {
 module.exports = () => {
   const folders = fs.readdirSync(resolveDocs());
   return folders.reduce((acc, folder) => {
-    const { title, filename, menus } = require(resolveDocs(folder, 'config.js'));
+    const { title, filename, menus } = require(resolveDocs(folder, 'config.json'));
 
     const menuEl = [];
     const contentEl = [];

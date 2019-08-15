@@ -1,6 +1,6 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { resolveRoot, resolve } = require('./utils');
+const { resolveRoot, resolve, fs } = require('./utils');
 
 module.exports = (configs) => {
   const minify = {
@@ -20,12 +20,17 @@ module.exports = (configs) => {
     }
   }));
   const copyPlugins = new CopyPlugin(
-    configs.map(config => ({
-      from: resolve(config.dir, 'static'),
-      to: 'static',
-      test: /\.(png|jpe?g|svg)$/,
-    }))
-  );
+    configs.reduce((acc, config) => {
+      const st = resolve(config.dir, 'static');
+      if (fs.existsSync(st)) {
+        acc.push({
+          from: st,
+          to: 'static',
+          test: /\.(png|jpe?g|svg)$/,
+        });
+      }
+      return acc;
+    }, []));
 
   return {
     plugins: htmlPlugins.concat(copyPlugins),

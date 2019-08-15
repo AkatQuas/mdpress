@@ -34,6 +34,7 @@ html {
 
 ul,
 li {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -109,6 +110,91 @@ header {
       width: 200px;
       background: url('./static/logo.png') no-repeat center;
       background-size: auto 40px;
+    }
+
+    .right {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 160px;
+      text-align: center;
+      cursor: pointer;
+      margin-top: -@header-height / 2;
+      height: @header-height;
+      max-height: 100%;
+      align-self: center;
+      color: #fff;
+      z-index: 20;
+      font-size: 14px;
+
+      .user {
+        height: @header-height;
+        line-height: @header-height;
+        position: relative;
+        padding-right: 0px;
+        &::after {
+          content: ' ';
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          color: transparent;
+          top: 50%;
+          right: 20px;
+          margin-top: -4px;
+          background: transparent url('./static/cheron.png') no-repeat center;
+          background-size: 12px auto;
+        }
+      }
+
+      .user:hover+.dropdown {
+        max-height: 300px;
+      }
+
+      .dropdown {
+        height: auto;
+        max-height: 0;
+        overflow: hidden;
+        transition: all .35s;
+        &:hover {
+          max-height: 300px;
+        }
+        .dropdown-item {
+          position: relative;
+          padding: 10px 12px 10px 35px;
+          color: #ffffff;
+          background-color: @primary-blue;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #48678e;
+          }
+
+          &::before {
+            content: ' ';
+            color: transparent;
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            top: 50%;
+            left: 40px;
+            margin-top: -6px;
+            background:  transparent no-repeat center;
+            background-size: auto 12px;
+          }
+
+          &.setting {
+            &::before {
+              background-image: url('./static/setting.png');
+            }
+          }
+
+          &.logout {
+            &::before {
+              background-image: url('./static/logout.png');
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 const { resolveRoot, fs } = require('./utils');
+const { execSync } = require('child_process');
 const webpack = require('webpack');
 const chalk = require('chalk');
 const merge = require('webpack-merge');
@@ -6,8 +7,17 @@ const baseConfig = require('./webpack.prod');
 const generateMarkdownPlugins = require('./generate-markdown-plugins');
 const prepareMarkdownConfig = require('./prepare-markdown-config');
 
+function formatMarkdown() {
+  const cmd = [
+    'prettier',
+    '--write',
+    '"src/docs/**/*.md"'
+  ].join(' ');
+  execSync(cmd);
+}
 
 function main() {
+  formatMarkdown();
   const DistDir = resolveRoot('dist');
   // read and parse docs
   const htmls = prepareMarkdownConfig();

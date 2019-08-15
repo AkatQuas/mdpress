@@ -3,9 +3,9 @@ const { resolveRoot } = require('./utils');
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json'],
   },
-  entry: resolveRoot('src', 'index.js'),
+  entry: resolveRoot('src', 'index.ts'),
   output: {
     path: resolveRoot('dist'),
     publicPath: '/',
@@ -13,6 +13,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
       {
         test: /\.css$/,
         use: [

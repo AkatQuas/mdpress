@@ -20,7 +20,7 @@ npm run dev
 
 ### Template
 
-And you are good to modify the `src/index.less`, `src/index.js` and `templates/template.html`.
+And you are good to modify the `src/index.less`, `src/index.ts` and `templates/template.html`.
 
 It's not so smart when you change the `template.html` file, the browser won't refresh. But the file does recompile, aka, rebuild.
 
@@ -32,14 +32,14 @@ Once you have sort out the frame theme, you can put your markdown file in the di
 src/docs
   ├── doc1
   |   ├── static -> static images such as jpg, png, and svg.
-  |   ├── config.js -> the menu tree and other configuration
+  |   ├── config.json -> the menu tree and other configuration
   |   ├── chapter1.md
   |   ├── chapter2.md
   |   └── chapter3.md
   |
   ├── doc2
   |   ├── static -> static images such as jpg, png, and svg.
-  |   ├── config.js -> the menu tree and other configuration
+  |   ├── config.json -> the menu tree and other configuration
   |   ├── chapter1.md
   |   ├── chapter2.md
   |   └── chapter3.md
@@ -47,29 +47,28 @@ src/docs
   ...
 ```
 
-Each directory in `src/docs` will create one static html file, and you can config them using config.js, [example](src/docs/ios/config.js).
+Each directory in `src/docs` will create one static html file, and you can config them using config.js, [example](src/docs/idomo/config.json).
 
-```js
-const config = {
-  title: 'iOS 文档',
-  filename: 'ios.html',
-  menus: [
-    {
-      label: '概述',
-      children: [
+```json
+{
+    "title": "iOS 文档",
+    "filename": "ios.html",
+    "menus": [
         {
-          label: '第一章',
-          markdown: 'chapter1',
+            "label": "概述",
+            "children": [
+                {
+                    "label": "第一章",
+                    "markdown": "chapter1"
+                }
+            ]
+        },
+        {
+            "label": "第二章",
+            "markdown": "chapter2"
         }
-      ]
-    },
-    {
-      label: '第二章',
-      markdown: 'chapter2',
-    }
-  ]
+    ]
 }
-
 ```
 
 Currently the template supports one-level-sub-menu, so some `menu-item` has a property `children` which is an array.
