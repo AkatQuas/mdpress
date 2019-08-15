@@ -2,7 +2,7 @@
   "name": "mdpress",
   "version": "1.0.0",
   "description": "",
-  "deployUrl": "http://localhost:8010",
+  "deployUrl": "/docs/",
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server --config scripts/webpack.dev.js --progress",
     "build": "NODE_ENV=production node scripts/build.js",

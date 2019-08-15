@@ -6,7 +6,7 @@ module.exports = (configs) => {
   const minify = {
     collapseWhitespace: true,
     removeComments: true,
-    removeAttributeQuotes: true
+    removeAttributeQuotes: false
   };
 
   const htmlPlugins = configs.map(config => new HtmlWebpackPlugin({

@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { resolveRoot } = require('./utils');
+const pkg = require('../package.json');
 
 module.exports = {
   resolve: {
@@ -8,7 +9,7 @@ module.exports = {
   entry: resolveRoot('src', 'index.ts'),
   output: {
     path: resolveRoot('dist'),
-    publicPath: '/',
+    publicPath: pkg.deployUrl || '/',
     filename: 'bundle.js',
   },
   module: {
